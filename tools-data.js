@@ -6,7 +6,7 @@ var tools = [
     "url": "https://github.com/coddingtonbear/taskwarrior-pomodoro",
     "url-src": "https://github.com/coddingtonbear/taskwarrior-pomodoro",
     "license": "Unknown",
-    "Author": ["Adam Coddington"],
+    "author": ["Adam Coddington"],
     "compatibility": "2.0+",
     "OS": "OSX",
     "obsolete": false,
@@ -19,7 +19,7 @@ var tools = [
     "description": "Don't want to manage your own Taskserver?  FreeCinc is a hosted implementation of Taskserver, where you can download a set of uniquely-generated credentials and start syncing for free.",
     "url": "http://freecinc.com",
     "license": "Unknown",
-    "Author": ["Jack Desert"],
+    "author": ["Jack Desert"],
     "compatibility": "2.3.0+",
     "obsolete": false,
     "theme":["Syncing"],
@@ -33,10 +33,10 @@ var tools = [
     "url-src": "https://github.com/tbabej/tasklib",
     "license": "BSD 3 clause",
     "language": "Python",
-    "Author": ["Rob Golding", "Tomas Babej"],
+    "author": ["Rob Golding", "Tomas Babej"],
     "compatibility": "2.1.x - 2.4.x",
     "obsolete": false,
     "verified": "2015-08-15",
     "last_update": "2015-08-09"
-  },
+  }
   ]
