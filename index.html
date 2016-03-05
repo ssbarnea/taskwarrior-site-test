@@ -80,7 +80,6 @@
           <div>
           <label class="sr-only" for="searchbox">Search</label>
           <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
-          <span class="glyphicon glyphicon-search search-icon"></span>
           </div>
           <div class="well">
           <fieldset id="category_criteria">
@@ -112,8 +111,8 @@
                 </fieldset>
           </div>
           <div class="well">
-            <label class="sr-only" for="obsolete_criteria">Obsolete</label>
-            <input type="checkbox" id="obsolete_criteria" >
+            <label for="obsolete_criteria">Obsolete</label>
+            <input type="checkbox" id="obsolete_criteria" > Obsolete
           </div>
           <div class="well">
           <fieldset id="license_criteria">
@@ -132,7 +131,7 @@
                 </div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" value="BSD">
+                    <input type="checkbox" value="BSD*">
                     <span>BSD</span>
                   </label>
                 </div>
@@ -147,7 +146,7 @@
           </div>
 
         <div class="col-md-8 main">
-          <div class="tools content row" id="tools"> </div>
+
           <table class="table table-striped">
             <tr>
               <th>Name</th>
@@ -155,24 +154,8 @@
               <th>License</th>
               <th>Compatibility</th>
             </tr>
-
-            <!-- Last update  2015-12-07 -->
-            <tr>
-              <td><a href="https://github.com/coddingtonbear/taskwarrior-pomodoro">taskwarrior-pomodoro</a></td>
-              <td>
-                taskwarrior-pomodoro is a simple application allowing you to
-                use Pomodoro techniques with Taskwarrior on OSX.
-                <a href="https://github.com/coddingtonbear/taskwarrior-pomodoro">
-                  <img alt="taskwarrior-pomodoro" class="img-thumbnail" src="https://camo.githubusercontent.com/e88877839afe5bc08e29a1d632257397bc4cc677/687474703a2f2f636f6464696e67746f6e626561722d7075626c69632e73332e616d617a6f6e6177732e636f6d2f6769746875622f7461736b77617272696f722d706f6d6f646f726f2f73637265656e73686f742e706e67" />
-                </a>
-                <br />
-                <small>Author: Adam Coddington</small>
-                <br />
-                <small><a href="https://github.com/coddingtonbear/taskwarrior-pomodoro"』Source Code</a></small>
-              </td>
-              <td>Unknown</td>
-              <td>2.0+</td>
-            </tr>
+            
+            <div class="tools content row" id="tools"> </div>
 
           </table>
         </div>
@@ -245,39 +228,18 @@
     
     
     <script id="tool-template" type="text/html">
-      <div class="col-md-4 tool">
-        <div class="thumbnail">
-          <span class="label label-success rating"><%= obsolete %>
-            <i class="glyphicon glyphicon-star"></i>
-          </span>
-          <div class="caption">
-            <h4><%= _fid %>. <%= name %></h4>
-            <div class="outline">
-              <%= description %>
-              <span class="runtime">
-              </span>
-            </div>
-            <div class="detail">
-              <dl>
-                <dt>Author</dt>
-                <dd><%= author %></dd>
-                <dt>Actors</dt>
-                <dd><%= license %></dt>
-                <dt>Year</dt>
-                <dd><%= compatibility %></dd>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </div>
-    </script>
-    
-    <script id="category_template" type="text/html">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="<%= category %>"> <%= category %>
-        </label>
-      </div>
+        <!-- Last update  <%= last_update %> -->
+            <tr>
+              <td><a href="https://github.com/coddingtonbear/taskwarrior-pomodoro">taskwarrior-pomodoro</a></td>
+              <td><%= description %>
+                <br />
+                <small>Author: <%= author %></small>
+                <br />
+                <small><a href="<%= url_src %>">Source Code</a></small>
+              </td>
+              <td><%= license %></td>
+              <td><%= compatibility %></td>
+            </tr>
     </script>
     
   </body>
