@@ -25,6 +25,8 @@ $(document).ready(function(){
 //  FJS.addCriteria({field: 'rating', ele: '#rating_filter', type: 'range'});
 //  FJS.addCriteria({field: 'runtime', ele: '#runtime_filter', type: 'range'});
   FJS.addCriteria({field: 'category', ele: '#category_criteria input:checkbox'});
+  FJS.addCriteria({field: 'obsolete', ele: '#obsolete_criteria input:checkbox', type: 'boolean'});
+  FJS.addCriteria({field: 'license', ele: '#license_criteria input:checkbox', all: 'all'});
 
 
 
@@ -35,5 +37,9 @@ function initCriteria(){
   $('#category_criteria :checkbox').prop('checked', true);
   $('#all_category').on('click', function(){
     $('#category_criteria :checkbox').prop('checked', $(this).is(':checked'));
+  });
+  $('#license_criteria :checkbox').prop('checked', true);
+  $('#all_license').on('click', function(){
+    $('#license_criteria :checkbox').prop('checked', $(this).is(':checked'));
   });
 }
