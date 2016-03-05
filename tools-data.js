@@ -11,7 +11,8 @@ var tools = [
     "OS": "OSX",
     "obsolete": false,
     "theme":["GUI", "TimeTracking", "Pomodoro"],
-    "last_update": "2015-12-07"
+    "last_update": "2015-12-07",
+    "verified": ""
   },
   {
     "category": "Service",
@@ -24,6 +25,7 @@ var tools = [
     "compatibility": "2.3.0+",
     "obsolete": false,
     "theme":["Syncing"],
+    "last_update":"",
     "verified": "2015-08-15"
   },
     {
