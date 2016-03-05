@@ -2,6 +2,7 @@
 
 A table filter experimentation for TaskWarrior web site.  
 The goal is to improve the http://taskwarrior.org/tools/ list.
+See: http://brunovernay.github.io/taskwarrior-site-test/
 
 I used this example: http://jiren.github.io/filter.js/
 
