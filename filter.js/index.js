@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+  initCriteria();
+
+
 
   //NOTE: To append in different container
   var appendToContainer = function(htmlele, record){
@@ -50,7 +53,7 @@ $(document).ready(function(){
   window.FJS = FJS;
 });
 
-
+function initCriteria(){
   $('#category_criteria :checkbox').prop('checked', true);
   $('#all_category').on('click', function(){
     $('#category_criteria :checkbox').prop('checked', $(this).is(':checked'));
