@@ -1,23 +1,42 @@
 var tools = [
   {
-    "name": "The Shawshank Redemption",
-    "outline": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    "rating": 9.3,
-    "director": "Frank Darabont",
-    "year": 1994,
-    "stars": [
-      "Tim Robbins",
-      "Morgan Freeman",
-      "Bob Gunton"
-    ],
-    "runtime": 142,
-    "genre": [
-      "Crime",
-      "Drama"
-    ],
-    "certificate": "R",
-    "date": "1974-04-30T10:29:29+05:30",
-    "actor": "Tim Robbins",
-    "id": 1
-  }
+    "category": "Front End",
+    "name": "taskwarrior-pomodoro",
+    "description": "taskwarrior-pomodoro is a simple application allowing you to use Pomodoro techniques with Taskwarrior on OSX.",
+    "url": "https://github.com/coddingtonbear/taskwarrior-pomodoro",
+    "url-src": "https://github.com/coddingtonbear/taskwarrior-pomodoro",
+    "license": "Unknown",
+    "Author": ["Adam Coddington"],
+    "compatibility": "2.0+",
+    "OS": "OSX",
+    "obsolete": false,
+    "theme":["GUI", "TimeTracking", "Pomodoro"],
+    "last_update": "2015-12-07"
+  },
+  {
+    "category": "Services",
+    "name": "FreeCinc",
+    "description": "Don't want to manage your own Taskserver?  FreeCinc is a hosted implementation of Taskserver, where you can download a set of uniquely-generated credentials and start syncing for free.",
+    "url": "http://freecinc.com",
+    "license": "Unknown",
+    "Author": ["Jack Desert"],
+    "compatibility": "2.3.0+",
+    "obsolete": false,
+    "theme":["Syncing"],
+    "verified": "2015-08-15"
+  },
+    {
+    "category": "Libraries",
+    "name": "tasklib",
+    "description": "Python library for interacting with Taskwarrior data.",
+    "url": "http://tasklib.readthedocs.org/en/latest/",
+    "url-src": "https://github.com/tbabej/tasklib",
+    "license": "BSD 3 clause",
+    "language": "Python",
+    "Author": ["Rob Golding", "Tomas Babej"],
+    "compatibility": "2.1.x - 2.4.x",
+    "obsolete": false,
+    "verified": "2015-08-15",
+    "last_update": "2015-08-09"
+  },
   ]
