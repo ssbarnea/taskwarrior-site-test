@@ -14,7 +14,7 @@ var tools = [
     "last_update": "2015-12-07"
   },
   {
-    "category": "Services",
+    "category": "Service",
     "name": "FreeCinc",
     "description": "Don't want to manage your own Taskserver?  FreeCinc is a hosted implementation of Taskserver, where you can download a set of uniquely-generated credentials and start syncing for free.",
     "url": "http://freecinc.com",
@@ -26,7 +26,7 @@ var tools = [
     "verified": "2015-08-15"
   },
     {
-    "category": "Libraries",
+    "category": "Library",
     "name": "tasklib",
     "description": "Python library for interacting with Taskwarrior data.",
     "url": "http://tasklib.readthedocs.org/en/latest/",
