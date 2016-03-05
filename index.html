@@ -78,7 +78,7 @@
       <div class="row">
         <div class="col-md-2 main">
           <div>
-          <label class="sr-only" for="searchbox">Search</label>
+          <label for="searchbox">Search</label>
           <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
           </div>
           <div class="well">
@@ -112,7 +112,7 @@
           </div>
           <div class="well">
             <label for="obsolete_criteria">Obsolete</label>
-            <input type="checkbox" id="obsolete_criteria" > Obsolete
+            <input type="checkbox" id="obsolete_criteria" >
           </div>
           <div class="well">
           <fieldset id="license_criteria">
@@ -131,7 +131,7 @@
                 </div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" value="BSD*">
+                    <input type="checkbox" value="BSD">
                     <span>BSD</span>
                   </label>
                 </div>
@@ -150,6 +150,7 @@
           <table class="table table-striped">
             <thead>
             <tr>
+              <th>Category</th>
               <th>Name</th>
               <th>Description</th>
               <th>License</th>
@@ -231,12 +232,15 @@
     <script id="tool-template" type="text/html">
         <!-- Last update  <%= last_update %> -->
             <tr>
-              <td><a href="https://github.com/coddingtonbear/taskwarrior-pomodoro">taskwarrior-pomodoro</a></td>
+              <td><%= category %></td>
+              <td><a href="<%= url %>"><%= name %></a></td>
               <td><%= description %>
                 <br />
                 <small>Author: <%= author %></small>
                 <br />
                 <small><a href="<%= url_src %>">Source Code</a></small>
+                <br />
+                Obsolete: <%= obsolete %>
               </td>
               <td><%= license %></td>
               <td><%= compatibility %></td>
