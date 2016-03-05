@@ -18,6 +18,7 @@ var tools = [
     "name": "FreeCinc",
     "description": "Don't want to manage your own Taskserver?  FreeCinc is a hosted implementation of Taskserver, where you can download a set of uniquely-generated credentials and start syncing for free.",
     "url": "http://freecinc.com",
+    "url-src": "",
     "license": "Unknown",
     "author": ["Jack Desert"],
     "compatibility": "2.3.0+",
