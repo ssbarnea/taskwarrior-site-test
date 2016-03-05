@@ -7,13 +7,13 @@ $(document).ready(function(){
     console.log(record)
   };
 
-  var FJS = FilterJS(movies, '#movies', {
-    template: '#movie-template',
+  var FJS = FilterJS(tools, '#tools', {
+    template: '#tool-template',
     search: {ele: '#searchbox'},
     //search: {ele: '#searchbox', fields: ['runtime']}, // With specific fields
     callbacks: {
       afterFilter: function(result){
-        $('#total_movies').text(result.length);
+        $('#total_tools').text(result.length);
       }
     }
     //appendToContainer: appendToContainer
@@ -41,10 +41,10 @@ $(document).ready(function(){
     batch_size: 50
   });
 
-  FJS.addCriteria({field: 'year', ele: '#year_filter', type: 'range', all: 'all'});
-  FJS.addCriteria({field: 'rating', ele: '#rating_filter', type: 'range'});
-  FJS.addCriteria({field: 'runtime', ele: '#runtime_filter', type: 'range'});
-  FJS.addCriteria({field: 'genre', ele: '#genre_criteria input:checkbox'});
+//  FJS.addCriteria({field: 'year', ele: '#year_filter', type: 'range', all: 'all'});
+//  FJS.addCriteria({field: 'rating', ele: '#rating_filter', type: 'range'});
+//  FJS.addCriteria({field: 'runtime', ele: '#runtime_filter', type: 'range'});
+  FJS.addCriteria({field: 'category', ele: '#genre_category input:checkbox'});
 
   /*
    * Add multiple criterial.
@@ -82,8 +82,8 @@ function initSliders(){
     }
   });
 
-  $('#genre_criteria :checkbox').prop('checked', true);
-  $('#all_genre').on('click', function(){
-    $('#genre_criteria :checkbox').prop('checked', $(this).is(':checked'));
+  $('#category_criteria :checkbox').prop('checked', true);
+  $('#all_category').on('click', function(){
+    $('#category_criteria :checkbox').prop('checked', $(this).is(':checked'));
   });
 }
