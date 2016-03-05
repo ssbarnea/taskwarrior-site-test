@@ -9,8 +9,7 @@ $(document).ready(function(){
 
   var FJS = FilterJS(tools, '#tools', {
     template: '#tool-template',
-    search: {ele: '#searchbox'},
-    //search: {ele: '#searchbox', fields: ['runtime']}, // With specific fields
+    search: {ele: '#searchbox', fields: ['name', 'description', 'author']},
     callbacks: {
       afterFilter: function(result){
         $('#total_tools').text(result.length);
@@ -25,7 +24,7 @@ $(document).ready(function(){
 //  FJS.addCriteria({field: 'rating', ele: '#rating_filter', type: 'range'});
 //  FJS.addCriteria({field: 'runtime', ele: '#runtime_filter', type: 'range'});
   FJS.addCriteria({field: 'category', ele: '#category_criteria input:checkbox'});
-  FJS.addCriteria({field: 'obsolete', ele: '#obsolete_criteria input:checkbox', type: 'boolean'});
+  FJS.addCriteria({field: 'obsolete', ele: '#obsolete_criteria input:checkbox'});
   FJS.addCriteria({field: 'license', ele: '#license_criteria input:checkbox', all: 'all'});
 
 
