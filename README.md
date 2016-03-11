@@ -4,7 +4,11 @@ A table filter experimentation for TaskWarrior web site.
 The goal is to improve the http://taskwarrior.org/tools/ list.
 See: http://brunovernay.github.io/taskwarrior-site-test/
 
-I used this example: http://jiren.github.io/filter.js/
+Depending on the branch: 
+
+* I motsly used this example: http://jiren.github.io/filter.js/
+* in `ang2` I look at Angular2, but it is too big and invasive for this use case.
+* Kmockout.js looks good
 
 TaskWarrior site Git: https://git.tasktools.org/projects/ST/repos/tt.org/browse/html
 
