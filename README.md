@@ -7,9 +7,9 @@ See: http://brunovernay.github.io/taskwarrior-site-test/
 Depending on the branch: 
 
 * GitHub rely on the branch name `gh-pages` to publish the site!
-* in branch `filterjs` I motsly used this example: http://jiren.github.io/filter.js/, but it does not seem very popular/supported/known.
+* in branch `filter-js` I motsly used this example: http://jiren.github.io/filter.js/, but it does not seem very popular/supported/known.
 * in branch `ang2` I look at Angular2, but it is too big and invasive for this use case.
-* http://KnockOutJS.com/ looks good 
+* in branch `kojs`, I try http://KnockOutJS.com/ which look good and well suited for the job
 
 TaskWarrior site Git: https://git.tasktools.org/projects/ST/repos/tt.org/browse/html
 
