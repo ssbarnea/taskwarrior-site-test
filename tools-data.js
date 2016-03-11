@@ -1,4 +1,4 @@
-var tools = [
+[
   {
     "category": "Front End",
     "name": "taskwarrior-pomodoro",
@@ -75,4 +75,4 @@ var tools = [
         "verified": "2015-08-15",
         "last_update": "2015-08-12"
     }
-  ]
+]
