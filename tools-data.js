@@ -9,9 +9,8 @@
     "author": ["Adam Coddington"],
     "compatibility": "2.0+",
       "language": ["C"],
-    "OS": "OSX",
     "obsolete": false,
-    "theme":["GUI", "TimeTracking", "Pomodoro"],
+    "theme":["OSX", "GUI", "TimeTracking", "Pomodoro"],
     "last_update": "2015-12-07",
     "verified": ""
   },
