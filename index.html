@@ -68,7 +68,8 @@
                 Please tell us about it.
             </p>
             <p>
-                There are <span id="total_tools">0</span> tools / extensions. <a
+                There are <span id="total_tools" data-bind="text: filteredTools().length">0</span> tools / extensions.
+                <a
                     href="https://github.com/BrunoVernay/taskwarrior-site-test"> Page Source Code on GitHub </a>
             </p>
             <p>
@@ -87,13 +88,13 @@
                     <legend>Category</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="all"/>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllCategory" />
                             <span>All</span>
                         </label>
                     </div>
                     <div class="checkbox" data-bind="foreach: categories">
                         <label>
-                            <input type="checkbox" data-bind="value: $data"/>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.CategoryFilter"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>

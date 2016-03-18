@@ -24,12 +24,14 @@ function Tool(data) {
 function ToolsViewModel() {
     var self = this;
 
+    self.toolsImmutable = ko.observableArray([]);
     self.tools = ko.observableArray([]);
     self.categories = ko.observableArray([]);
     self.themes = ko.observableArray([]);
     self.languages = ko.observableArray([]);
 
     // Load tools from server, convert to Tools instances, then populate the data for templates
+    // This data is static.
     $.getJSON("tools-data.js", function(allData) {
         var mappedTools = $.map(allData, function(item) { return new Tool(item) });
 
@@ -54,26 +56,35 @@ function ToolsViewModel() {
                 uniqueLanguage[mappedTools[i].language[j]] = 0;
             }
         }
-        self.tools(mappedTools);
-
+        self.toolsImmutable(mappedTools);
+        self.tools(self.toolsImmutable.slice(0));   // TODO optimize !!!
     });
 
-    self.filteredTools = ko.pureComputed(
+    self.CategoryFilter = ko.observableArray([]);
+
+
+    self.selectedAllCategory = ko.pureComputed({
+        read: function () {
+            console.log("Read ... Filter: " + self.CategoryFilter.slice(0));
+            return self.CategoryFilter().length === self.categories().length;
+        },
+        write: function (value) {
+            self.CategoryFilter(value ? self.categories.slice(0) : []);
+        }
+    });
+
+    self.filteredTools = ko.computed(       // Todo: optimize !!! could use tools directly!
         function() {
-            self.tools.remove( function (item) { return item.obsolete; } );  //filter(function());
+            console.log("Filtering ... " + self.CategoryFilter.slice(0));
+            self.tools(self.toolsImmutable.slice(0));   // TODO optimize !!!
+            self.tools.remove( function (tool) {
+                var isCategoryIn = (self.CategoryFilter().length == 0) ||  ( self.CategoryFilter().indexOf(tool.category) > -1 );
+                return tool.obsolete || !isCategoryIn;
+            } );
             self.tools.sort(function (left, right) { return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1) });
             return self.tools();
-
         }
     );
-
-
-    // Non-editable catalog data - would come from the server
-    self.availableMeals = [
-        { name: "Standard (sandwich)", price: 0 },
-        { name: "Premium (lobster)", price: 34.95 },
-        { name: "Ultimate (whole zebra)", price: 290 }
-    ];    
 
 }
 
