@@ -107,13 +107,13 @@
                     <legend>Theme</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="all"/>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllTheme" />
                             <span>All</span>
                         </label>
                     </div>
                     <div class="checkbox" data-bind="foreach: themes">
                         <label>
-                            <input type="checkbox" data-bind="value: $data"/>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.ThemeFilter"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>

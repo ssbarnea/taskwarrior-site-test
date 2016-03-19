@@ -24,7 +24,6 @@ function Tool(data) {
 function ToolsViewModel() {
     var self = this;
 
-    self.toolsImmutable = ko.observableArray([]);
     self.tools = ko.observableArray([]);
     self.categories = ko.observableArray([]);
     self.themes = ko.observableArray([]);
@@ -56,13 +55,15 @@ function ToolsViewModel() {
                 uniqueLanguage[mappedTools[i].language[j]] = 0;
             }
         }
-        self.toolsImmutable(mappedTools);
-        self.tools(self.toolsImmutable.slice(0));   // TODO optimize !!!
+        self.tools(mappedTools);
+        self.tools.sort(function (left, right) { return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1) });
     });
 
+
+
+
+    // The category selector
     self.CategoryFilter = ko.observableArray([]);
-
-
     self.selectedAllCategory = ko.pureComputed({
         read: function () {
             console.log("Read ... Filter: " + self.CategoryFilter.slice(0));
@@ -73,16 +74,30 @@ function ToolsViewModel() {
         }
     });
 
-    self.filteredTools = ko.computed(       // Todo: optimize !!! could use tools directly!
+
+    // The Theme selector
+    self.ThemeFilter = ko.observableArray([]);
+    self.selectedAllTheme = ko.pureComputed({
+        read: function () {
+            console.log("Read ... Filter: " + self.ThemeFilter.slice(0));
+            return self.ThemeFilter().length === self.themes().length;
+        },
+        write: function (value) {
+            self.ThemeFilter(value ? self.themes.slice(0) : []);
+        }
+    });
+
+    self.ObsoleteFilter = ko.observable(false);
+
+    // The printed tool list:
+    self.filteredTools = ko.computed(
         function() {
-            console.log("Filtering ... " + self.CategoryFilter.slice(0));
-            self.tools(self.toolsImmutable.slice(0));   // TODO optimize !!!
-            self.tools.remove( function (tool) {
-                var isCategoryIn = (self.CategoryFilter().length == 0) ||  ( self.CategoryFilter().indexOf(tool.category) > -1 );
-                return tool.obsolete || !isCategoryIn;
-            } );
-            self.tools.sort(function (left, right) { return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1) });
-            return self.tools();
+            return self.tools().filter(
+                function (tool) {
+                    var isCategoryIn = (self.CategoryFilter().length == 0) ||  self.CategoryFilter().includes(tool.category) ;
+                    var isThemeIn = (self.ThemeFilter().length == 0) ||  self.ThemeFilter().some(function (elem) { return tool.theme.includes(elem)} );
+                    return !tool.obsolete && isCategoryIn && isThemeIn;
+                } );
         }
     );
 
