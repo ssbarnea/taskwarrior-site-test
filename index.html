@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="/images/favicon.ico">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
 
     <title>Taskwarrior - What's next?</title>
 
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="site.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="site.css" rel="stylesheet"/>
     <!-- link href="tools/tools.css" rel="stylesheet"  NOTE this one is empty   -->
 
-    <script src="jquery-2.2.1.min.js" type="text/javascript"></script>
-    <script src="filter.js/index.js" type="text/javascript"></script>
-    <script src="tools-data.js" type="text/javascript"></script>
-    <script src="filter.js/filter.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- script src="tools-data.js" type="text/javascript"></script -->
+    <script src="filter-ko.js" type="text/javascript" defer="defer"></script>
 
     <!--[if lt IE 9]>
     <script src="/bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -68,8 +68,9 @@
                 Please tell us about it.
             </p>
             <p>
-                There are <span id="total_tools">0</span> tools / extensions. <a
-                    href="https://github.com/BrunoVernay/taskwarrior-site-test"> Page Source Code on GitHub </a>
+                There are <span id="total_tools" data-bind="text: filteredTools().length">0</span> tools / extensions.
+                <a
+                        href="https://github.com/BrunoVernay/taskwarrior-site-test"> Page Source Code on GitHub </a>
             </p>
             <p>
                 &nbsp;
@@ -79,102 +80,70 @@
 
     <div class="row">
         <div class="col-md-2 main">
-            <div>
+            <!-- div>
                 <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
-            </div>
+            </div -->
             <div class="well">
-                <fieldset id="category_criteria">
-                    <legend>Category</legend>
+                <fieldset>
+                    <legend style="margin-bottom: 0px">Category</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="All" id="all_category">
-                            <span>All</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllCategory"/>
+                            <em>All</em>
                         </label>
                     </div>
-                    <div class="checkbox">
+                    <div class="checkbox" data-bind="foreach: categories">
                         <label>
-                            <input type="checkbox" value="Front End">
-                            <span>Front End</span>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.CategoryFilter"/>
+                            <span data-bind="text: $data"></span>
                         </label>
+                        <br/>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Library">
-                            <span>Library</span>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Extension">
-                            <span>Extension</span>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Service">
-                            <span>Service</span>
-                        </label>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="well">
-                <fieldset id="obsolete_criteria">
-                    <legend>Obsolete</legend>
-                    <label for="include_obsolete_box">Include</label>
-                    <input id="include_obsolete_box" type="checkbox" value="true">
-                    <input type="checkbox" value="false" hidden checked>
+
+
                 </fieldset>
             </div>
             <div class="well">
                 <fieldset id="theme_criteria">
-                    <legend>Theme</legend>
+                    <legend style="margin-bottom: 0px">Theme</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="Syncing">
-                            <span>Syncing</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllTheme"/>
+                            <em>All</em>
                         </label>
                     </div>
-                    <div class="checkbox">
+                    <div class="checkbox" data-bind="foreach: themes">
                         <label>
-                            <input type="checkbox" value="TimeTracking">
-                            <span>TimeTracking</span>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.ThemeFilter"/>
+                            <span data-bind="text: $data"></span>
                         </label>
+                        <br/>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="GUI">
-                            <span>GUI</span>
-                        </label>
-                    </div>
+
                 </fieldset>
             </div>
+
             <div class="well">
-                <fieldset id="language_criteria">
-                    <legend>Language</legend>
+                <label style="font-size: 21px; font-weight: normal">Obsolete <input type="checkbox"
+                                                                                    data-bind="checked: ObsoleteSelected"/></label>
+            </div>
+            <div class="well">
+                <fieldset>
+                    <legend style="margin-bottom: 0px">Language</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="Python">
-                            <span>Python</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllLanguages"/>
+                            <em>All</em>
                         </label>
                     </div>
-                    <div class="checkbox">
+                    <div class="checkbox" data-bind="foreach: languages">
                         <label>
-                            <input type="checkbox" value="Lua">
-                            <span>Lua</span>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.LanguagesSelected"/>
+                            <span data-bind="text: $data"></span>
                         </label>
+                        <br/>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Perl">
-                            <span>Perl</span>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="C">
-                            <span>C</span>
-                        </label>
-                    </div>
+
                 </fieldset>
             </div>
         </div>
@@ -184,14 +153,31 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <!-- th>Category</th -->
                     <th>Name</th>
                     <th>Description</th>
-                    <th>License</th>
-                    <th>Compatibility</th>
+                    <th>Compatibility / License</th>
                 </tr>
                 </thead>
-                <tbody class="tools content row" id="tools"></tbody>
+                <tbody class="tools content row" data-bind="foreach: filteredTools">
+                <tr>
+                    <td>
+                        <a title="Project" style="font-weight: bold" data-bind="text: name, attr:{ href: url }"></a>
+                        <p title="Category" data-bind="text: category"></p>
+                    </td>
+                    <td>
+                        <p data-bind="text: description, attr:{ title: verified }"></p>
+                        By <em title="Authors" data-bind="text: author"></em> &nbsp;
+                        <a data-bind="attr:{ href: url_src }">Sources</a>
+                        (<span data-bind="text: language"></span>) &nbsp;
+                        Last update: <span title="Last update" data-bind="text: last_update"></span>
+                        <b data-bind="visible: obsolete">Obsolete</b>
+                    </td>
+                    <td>
+                        <p title="Version compatibility" data-bind="text: compatibility"></p>
+                        <p title="License" data-bind="text: license"></p>
+                    </td>
+                </tr>
+                </tbody>
 
             </table>
         </div>
@@ -262,35 +248,6 @@
         </div>
     </div>
 </div>
-
-
-<script id="tool-template" type="text/html">
-    <!-- Last update  <%= last_update %> -->
-    <tr>
-        <td>
-            <a href="<%= url %>"><%= name %></a>
-            <br/>
-            <small><%= category %></small>
-            <% if(obsolete){ %><br/><em>Obsolete</em><% } %>
-        </td>
-        <td><%= description %>
-            <br/>
-            <small>Author: <%= author %></small>
-            /
-            <small><a href="<%= url_src %>">Source Code</a></small>
-            <br/>Theme:
-            <% for (var i=0, l=theme.length; i < l ; i++){ %>
-                <%= theme[i] %> /
-            <% } %>
-            <br/>Language:
-            <% for (var i=0, l=language.length; i < l ; i++){ %>
-            <%= language[i] %> /
-            <% } %>
-        </td>
-        <td><%= license %></td>
-        <td><%= compatibility %></td>
-    </tr>
-</script>
 
 
 </body>

@@ -1,4 +1,4 @@
-var tools = [
+[
   {
     "category": "Front End",
     "name": "taskwarrior-pomodoro",
@@ -9,9 +9,8 @@ var tools = [
     "author": ["Adam Coddington"],
     "compatibility": "2.0+",
       "language": ["C"],
-    "OS": "OSX",
     "obsolete": false,
-    "theme":["GUI", "TimeTracking", "Pomodoro"],
+    "theme":["OSX", "GUI", "TimeTracking", "Pomodoro"],
     "last_update": "2015-12-07",
     "verified": ""
   },
@@ -75,4 +74,4 @@ var tools = [
         "verified": "2015-08-15",
         "last_update": "2015-08-12"
     }
-  ]
+]
