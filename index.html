@@ -70,7 +70,7 @@
             <p>
                 There are <span id="total_tools" data-bind="text: filteredTools().length">0</span> tools / extensions.
                 <a
-                    href="https://github.com/BrunoVernay/taskwarrior-site-test"> Page Source Code on GitHub </a>
+                        href="https://github.com/BrunoVernay/taskwarrior-site-test"> Page Source Code on GitHub </a>
             </p>
             <p>
                 &nbsp;
@@ -80,16 +80,16 @@
 
     <div class="row">
         <div class="col-md-2 main">
-            <div>
+            <!-- div>
                 <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
-            </div>
+            </div -->
             <div class="well">
-                <fieldset id="category_criteria">
-                    <legend>Category</legend>
+                <fieldset>
+                    <legend style="margin-bottom: 0px">Category</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="all" data-bind="checked: selectedAllCategory" />
-                            <span>All</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllCategory"/>
+                            <em>All</em>
                         </label>
                     </div>
                     <div class="checkbox" data-bind="foreach: categories">
@@ -100,15 +100,16 @@
                         <br/>
                     </div>
 
+
                 </fieldset>
             </div>
             <div class="well">
                 <fieldset id="theme_criteria">
-                    <legend>Theme</legend>
+                    <legend style="margin-bottom: 0px">Theme</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="all" data-bind="checked: selectedAllTheme" />
-                            <span>All</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllTheme"/>
+                            <em>All</em>
                         </label>
                     </div>
                     <div class="checkbox" data-bind="foreach: themes">
@@ -123,25 +124,21 @@
             </div>
 
             <div class="well">
-                <fieldset id="obsolete_criteria">
-                    <legend>Obsolete</legend>
-                    <label for="include_obsolete_box">Include</label>
-                    <input id="include_obsolete_box" type="checkbox" value="true"/>
-                    <input type="checkbox" value="false" hidden checked/>
-                </fieldset>
+                <label style="font-size: 21px; font-weight: normal">Obsolete <input type="checkbox"
+                                                                                    data-bind="checked: ObsoleteSelected"/></label>
             </div>
             <div class="well">
-                <fieldset id="language_criteria">
-                    <legend>Language</legend>
+                <fieldset>
+                    <legend style="margin-bottom: 0px">Language</legend>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="all"/>
-                            <span>All</span>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllLanguages"/>
+                            <em>All</em>
                         </label>
                     </div>
                     <div class="checkbox" data-bind="foreach: languages">
                         <label>
-                            <input type="checkbox" data-bind="value: $data"/>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.LanguagesSelected"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>
@@ -156,27 +153,29 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <!-- th>Category</th -->
                     <th>Name</th>
                     <th>Description</th>
-                    <th>License</th>
-                    <th>Compatibility</th>
+                    <th>Compatibility / License</th>
                 </tr>
                 </thead>
                 <tbody class="tools content row" data-bind="foreach: filteredTools">
                 <tr>
                     <td>
-                        <span data-bind="text: category"></span>
+                        <a title="Project" style="font-weight: bold" data-bind="text: name, attr:{ href: url }"></a>
+                        <p title="Category" data-bind="text: category"></p>
                     </td>
                     <td>
-                        <span data-bind="text: name"></span>
-                        <br/>
-                        <span data-bind="visible: obsolete">Obsolete</span>
+                        <p data-bind="text: description, attr:{ title: verified }"></p>
+                        By <em title="Authors" data-bind="text: author"></em> &nbsp;
+                        <a data-bind="attr:{ href: url_src }">Sources</a>
+                        (<span data-bind="text: language"></span>) &nbsp;
+                        Last update: <span title="Last update" data-bind="text: last_update"></span>
+                        <b data-bind="visible: obsolete">Obsolete</b>
                     </td>
                     <td>
-                        <span data-bind="text: description"></span>
+                        <p title="Version compatibility" data-bind="text: compatibility"></p>
+                        <p title="License" data-bind="text: license"></p>
                     </td>
-
                 </tr>
                 </tbody>
 

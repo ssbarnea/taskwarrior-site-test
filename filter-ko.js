@@ -87,7 +87,20 @@ function ToolsViewModel() {
         }
     });
 
-    self.ObsoleteFilter = ko.observable(false);
+    self.ObsoleteSelected = ko.observable(false);
+
+
+    // The Language selector
+    self.LanguagesSelected = ko.observableArray([]);
+    self.selectedAllLanguages = ko.pureComputed({
+        read: function () {
+            console.log("Read ... Filter: " + self.LanguagesSelected.slice(0));
+            return self.LanguagesSelected().length === self.languages().length;
+        },
+        write: function (value) {
+            self.LanguagesSelected(value ? self.languages.slice(0) : []);
+        }
+    });
 
     // The printed tool list:
     self.filteredTools = ko.computed(
@@ -96,12 +109,13 @@ function ToolsViewModel() {
                 function (tool) {
                     var isCategoryIn = (self.CategoryFilter().length == 0) ||  self.CategoryFilter().includes(tool.category) ;
                     var isThemeIn = (self.ThemeFilter().length == 0) ||  self.ThemeFilter().some(function (elem) { return tool.theme.includes(elem)} );
-                    return !tool.obsolete && isCategoryIn && isThemeIn;
+                    var isLanguageIn = (self.LanguagesSelected().length == 0) ||  self.LanguagesSelected().some(function (elem) { return tool.language.includes(elem)} );
+                    return (!tool.obsolete || self.ObsoleteSelected()) && isCategoryIn && isThemeIn && isLanguageIn;
                 } );
         }
     );
 
 }
-
+ko.options.deferUpdates = true;
 ko.applyBindings(new ToolsViewModel());
 
