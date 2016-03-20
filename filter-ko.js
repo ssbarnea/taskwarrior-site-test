@@ -62,8 +62,9 @@ function ToolsViewModel() {
 
 
 
-    // The category selector
-    self.CategoriesSelected = ko.observableArray([]);
+    // The category selector can be bookmarked
+    var path = location.hash.substr(1).split('?')[0];
+    self.CategoriesSelected = ko.observableArray([path]);
     self.selectedAllCategory = ko.pureComputed({
         read: function () {
             console.log("Read ... Filter: " + self.CategoriesSelected.slice(0));
