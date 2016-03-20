@@ -1,6 +1,6 @@
 /*
  * We use KnockOutJS to filter the tools and extensions table.
- * The Data are loaded in the index.html file which might not be the most performant
+ * The Data are loaded in the index.html file which might not be the most performing
  *
  * */
 
@@ -63,27 +63,27 @@ function ToolsViewModel() {
 
 
     // The category selector
-    self.CategoryFilter = ko.observableArray([]);
+    self.CategoriesSelected = ko.observableArray([]);
     self.selectedAllCategory = ko.pureComputed({
         read: function () {
-            console.log("Read ... Filter: " + self.CategoryFilter.slice(0));
-            return self.CategoryFilter().length === self.categories().length;
+            console.log("Read ... Filter: " + self.CategoriesSelected.slice(0));
+            return self.CategoriesSelected().length === self.categories().length;
         },
         write: function (value) {
-            self.CategoryFilter(value ? self.categories.slice(0) : []);
+            self.CategoriesSelected(value ? self.categories.slice(0) : []);
         }
     });
 
 
     // The Theme selector
-    self.ThemeFilter = ko.observableArray([]);
+    self.ThemesSelected = ko.observableArray([]);
     self.selectedAllTheme = ko.pureComputed({
         read: function () {
-            console.log("Read ... Filter: " + self.ThemeFilter.slice(0));
-            return self.ThemeFilter().length === self.themes().length;
+            console.log("Read ... Filter: " + self.ThemesSelected.slice(0));
+            return self.ThemesSelected().length === self.themes().length;
         },
         write: function (value) {
-            self.ThemeFilter(value ? self.themes.slice(0) : []);
+            self.ThemesSelected(value ? self.themes.slice(0) : []);
         }
     });
 
@@ -107,8 +107,8 @@ function ToolsViewModel() {
         function() {
             return self.tools().filter(
                 function (tool) {
-                    var isCategoryIn = (self.CategoryFilter().length == 0) ||  self.CategoryFilter().includes(tool.category) ;
-                    var isThemeIn = (self.ThemeFilter().length == 0) ||  self.ThemeFilter().some(function (elem) { return tool.theme.includes(elem)} );
+                    var isCategoryIn = (self.CategoriesSelected().length == 0) ||  self.CategoriesSelected().includes(tool.category) ;
+                    var isThemeIn = (self.ThemesSelected().length == 0) ||  self.ThemesSelected().some(function (elem) { return tool.theme.includes(elem)} );
                     var isLanguageIn = (self.LanguagesSelected().length == 0) ||  self.LanguagesSelected().some(function (elem) { return tool.language.includes(elem)} );
                     return (!tool.obsolete || self.ObsoleteSelected()) && isCategoryIn && isThemeIn && isLanguageIn;
                 } );

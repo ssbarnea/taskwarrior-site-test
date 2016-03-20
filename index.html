@@ -94,7 +94,7 @@
                     </div>
                     <div class="checkbox" data-bind="foreach: categories">
                         <label>
-                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.CategoryFilter"/>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.CategoriesSelected"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="checkbox" data-bind="foreach: themes">
                         <label>
-                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.ThemeFilter"/>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.ThemesSelected"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>
