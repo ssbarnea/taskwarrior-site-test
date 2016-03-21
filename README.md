@@ -15,6 +15,10 @@ Official TaskWarrior site Git: https://git.tasktools.org/projects/ST/repos/tt.or
 
 I still have to scrapp all the HTML data to fill the JSON file  and maybe to add free search.
 
+About HTML scraping:
+
+* https://ksah.in/Introduction-to-web-scraping-with-java/
+* See also http://JSoup.org/
 
 See some other JS solutions:
 
