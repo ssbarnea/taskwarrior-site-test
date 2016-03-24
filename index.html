@@ -165,11 +165,11 @@
                         <p title="Category" data-bind="text: category"></p>
                     </td>
                     <td>
-                        <p data-bind="text: description, attr:{ title: verified }"></p>
+                        <p data-bind="html: description"></p>
                         By <em title="Authors" data-bind="text: author"></em> &nbsp;
                         <a data-bind="attr:{ href: url_src }">Sources</a>
-                        (<span data-bind="text: language"></span>) &nbsp;
-                        Last update: <span title="Last update" data-bind="text: last_update"></span>
+                        <span data-bind="visible: language.length > 0">(<span data-bind="text: language"></span>)</span>  &nbsp;
+                        Last update: <span title="Last update" data-bind="text: last_update, attr:{ title: verified }"></span>
                         <b data-bind="visible: obsolete">Obsolete</b>
                     </td>
                     <td>
