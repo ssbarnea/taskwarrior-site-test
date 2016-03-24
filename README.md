@@ -9,16 +9,12 @@ Depending on the branch:
 * GitHub rely on the branch name `gh-pages` to publish the site! (Currently it is merged from `kojs`)
 * in branch `filter-js` I motsly used this example: http://jiren.github.io/filter.js/, but it does not seem very popular/supported/known. _Abandonned_
 * in branch `ang2` I look at Angular2, but it is too big and invasive for this use case. _Abandonned_
-* in branch `kojs`, I use http://KnockOutJS.com/ which looks good and well suited for the job.
+* in branch `kojs`, I use http://KnockOutJS.com/ which looks good and well suited for the job. (beware all dev occurs in `gh-pages` currently)
 
 Official TaskWarrior site Git: https://git.tasktools.org/projects/ST/repos/tt.org/browse/html
 
-I still have to scrapp all the HTML data to fill the JSON file  and maybe to add free search.
+I started scraping the HTML data to fill the JSON file  and maybe to add free search: https://github.com/BrunoVernay/tw-html-parse
 
-About HTML scraping:
-
-* https://ksah.in/Introduction-to-web-scraping-with-java/
-* See also http://JSoup.org/
 
 See some other JS solutions:
 
