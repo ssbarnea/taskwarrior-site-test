@@ -80,9 +80,13 @@
 
     <div class="row">
         <div class="col-md-2 main">
-            <!-- div>
-                <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
-            </div -->
+            <div class="well">
+                <fieldset>
+                    <div><legend style="margin-bottom: 0px">Search</legend>
+                        <input type="search" class="form-control"  placeholder="Search &hellip;" data-bind="textInput: query" autocomplete="off" />
+                    </div>
+                </fieldset>
+            </div>
             <div class="well">
                 <fieldset>
                     <legend style="margin-bottom: 0px">Category</legend>
@@ -124,8 +128,7 @@
             </div>
 
             <div class="well">
-                <label style="font-size: 21px; font-weight: normal">Obsolete <input type="checkbox"
-                                                                                    data-bind="checked: ObsoleteSelected"/></label>
+                <label style="font-size: 21px; font-weight: normal">Obsolete <input type="checkbox" data-bind="checked: ObsoleteSelected"/></label>
             </div>
             <div class="well">
                 <fieldset>
@@ -139,6 +142,25 @@
                     <div class="checkbox" data-bind="foreach: languages">
                         <label>
                             <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.LanguagesSelected"/>
+                            <span data-bind="text: $data"></span>
+                        </label>
+                        <br/>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="well">
+                <fieldset>
+                    <legend style="margin-bottom: 0px">Author</legend>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="all" data-bind="checked: selectedAllAuthors"/>
+                            <em>All</em>
+                        </label>
+                    </div>
+                    <div class="checkbox" data-bind="foreach: authors">
+                        <label>
+                            <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.AuthorsSelected"/>
                             <span data-bind="text: $data"></span>
                         </label>
                         <br/>

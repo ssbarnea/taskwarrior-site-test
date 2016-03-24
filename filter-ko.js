@@ -1,6 +1,5 @@
 /*
  * We use KnockOutJS to filter the tools and extensions table.
- * The Data are loaded in the index.html file which might not be the most performing
  *
  * */
 
@@ -28,6 +27,7 @@ function ToolsViewModel() {
     self.categories = ko.observableArray([]);
     self.themes = ko.observableArray([]);
     self.languages = ko.observableArray([]);
+    self.authors = ko.observableArray([]);
 
     // Load tools from server, convert to Tools instances, then populate the data for templates
     // This data is static.
@@ -37,6 +37,7 @@ function ToolsViewModel() {
         var uniqueCategory = {};
         var uniqueTheme = {};
         var uniqueLanguage = {};
+        var uniqueAuthor = {};
         for( var i in mappedTools ){
             if( typeof(uniqueCategory[mappedTools[i].category]) == "undefined"){
                 self.categories.push(mappedTools[i].category);
@@ -54,12 +55,17 @@ function ToolsViewModel() {
                 }
                 uniqueLanguage[mappedTools[i].language[j]] = 0;
             }
+            for (var j in mappedTools[i].author) {
+                if (typeof(uniqueAuthor[mappedTools[i].author[j]]) == "undefined") {
+                    self.authors.push(mappedTools[i].author[j]);
+                }
+                uniqueAuthor[mappedTools[i].author[j]] = 0;
+            }
         }
         self.tools(mappedTools);
         self.tools.sort(function (left, right) { return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1) });
+        self.authors.sort();
     });
-
-
 
 
     // The category selector can be bookmarked
@@ -88,6 +94,7 @@ function ToolsViewModel() {
         }
     });
 
+
     self.ObsoleteSelected = ko.observable(false);
 
 
@@ -103,6 +110,22 @@ function ToolsViewModel() {
         }
     });
 
+    // The Author selector  (huge list...)
+    self.AuthorsSelected = ko.observableArray([]);
+    self.selectedAllAuthors = ko.pureComputed({
+        read: function () {
+            console.log("Read ... Filter: " + self.AuthorsSelected.slice(0));
+            return self.AuthorsSelected().length === self.authors().length;
+        },
+        write: function (value) {
+            self.AuthorsSelected(value ? self.authors.slice(0) : []);
+        }
+    });
+
+    // the search field
+    self.query = ko.observable('');
+
+
     // The printed tool list:
     self.filteredTools = ko.computed(
         function() {
@@ -111,8 +134,12 @@ function ToolsViewModel() {
                     var isCategoryIn = (self.CategoriesSelected().length == 0) ||  self.CategoriesSelected().includes(tool.category) ;
                     var isThemeIn = (self.ThemesSelected().length == 0) ||  self.ThemesSelected().some(function (elem) { return tool.theme.includes(elem)} );
                     var isLanguageIn = (self.LanguagesSelected().length == 0) ||  self.LanguagesSelected().some(function (elem) { return tool.language.includes(elem)} );
-                    return (!tool.obsolete || self.ObsoleteSelected()) && isCategoryIn && isThemeIn && isLanguageIn;
-                } );
+                    var isAuthorIn = (self.AuthorsSelected().length == 0) ||  self.AuthorsSelected().some(function (elem) { return tool.author.includes(elem)} );
+                    var isQuery = (self.query().length == 0) || (tool.description.toLowerCase().indexOf(self.query().toLowerCase()) > -1)
+                            || (tool.license.toLowerCase().indexOf( self.query().toLowerCase() ) > -1)
+                            || (tool.author.join().toLowerCase().indexOf( self.query().toLowerCase() ) > -1);
+                    return (!tool.obsolete || self.ObsoleteSelected()) && isCategoryIn && isThemeIn && isLanguageIn && isAuthorIn && isQuery;
+                } ).sort(function (left, right) { return left.name == right.name ? 0 : (left.name.toLowerCase() < right.name.toLowerCase() ? -1 : 1) });
         }
     );
 
