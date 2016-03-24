@@ -2,7 +2,7 @@
 
 A table filter experimentation for TaskWarrior web site.  
 The goal is to improve the http://taskwarrior.org/tools/ list.
-See: http://brunovernay.github.io/taskwarrior-site-test/ (can even bookmark categories:  [Front End](http://brunovernay.github.io/taskwarrior-site-test/#Front End))
+See: http://brunovernay.github.io/taskwarrior-site-test/ (can even bookmark categories:  [Front Ends](http://brunovernay.github.io/taskwarrior-site-test/#Front Ends))
 
 Depending on the branch: 
 
