@@ -24,3 +24,15 @@ body > .container      {padding: 60px 15px 0}
 .text-heavy            {font-weight: 500}
 .text-large            {font-size: 125%}
 .text-tiny             {font-size: 75%}
+
+/* Used to limit the number of authors displayed
+/*http://stackoverflow.com/questions/3922739/limit-text-length-to-n-lines-using-css*/
+.giveMeEllipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   line-height: 1;        /* fallback */
+   max-height: 2;       /* fallback */
+}
