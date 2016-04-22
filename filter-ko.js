@@ -135,9 +135,10 @@ function ToolsViewModel() {
                     var isThemeIn = (self.ThemesSelected().length == 0) ||  self.ThemesSelected().some(function (elem) { return tool.theme.includes(elem)} );
                     var isLanguageIn = (self.LanguagesSelected().length == 0) ||  self.LanguagesSelected().some(function (elem) { return tool.language.includes(elem)} );
                     var isAuthorIn = (self.AuthorsSelected().length == 0) ||  self.AuthorsSelected().some(function (elem) { return tool.author.includes(elem)} );
-                    var isQuery = (self.query().length == 0) || (tool.description.toLowerCase().indexOf(self.query().toLowerCase()) > -1)
-                            || (tool.license.toLowerCase().indexOf( self.query().toLowerCase() ) > -1)
-                            || (tool.author.join().toLowerCase().indexOf( self.query().toLowerCase() ) > -1);
+                    var isQuery = (self.query().length == 0)
+                            || (tool.description && tool.description.toLowerCase().indexOf(self.query().toLowerCase()) > -1)
+                            || (tool.license && tool.license.toLowerCase().indexOf( self.query().toLowerCase() ) > -1)
+                            || (tool.author && tool.author.join().toLowerCase().indexOf( self.query().toLowerCase() ) > -1);
                     return (!tool.obsolete || self.ObsoleteSelected()) && isCategoryIn && isThemeIn && isLanguageIn && isAuthorIn && isQuery;
                 } ).sort(function (left, right) { return left.name == right.name ? 0 : (left.name.toLowerCase() < right.name.toLowerCase() ? -1 : 1) });
         }
