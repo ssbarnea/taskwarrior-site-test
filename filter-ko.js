@@ -132,7 +132,7 @@ function ToolsViewModel() {
             return self.tools().filter(
                 function (tool) {
                     var isCategoryIn = (self.CategoriesSelected().length == 0) ||  self.CategoriesSelected().includes(tool.category) ;
-                    var isThemeIn = (self.ThemesSelected().length == 0) ||  self.ThemesSelected().some(function (elem) { return tool.theme.includes(elem)} );
+                    var isThemeIn = (self.ThemesSelected().length == 0) || tool.theme &&  self.ThemesSelected().some(function (elem) { return tool.theme.includes(elem)} );
                     var isLanguageIn = (self.LanguagesSelected().length == 0) ||  self.LanguagesSelected().some(function (elem) { return tool.language.includes(elem)} );
                     var isAuthorIn = (self.AuthorsSelected().length == 0) ||  self.AuthorsSelected().some(function (elem) { return tool.author.includes(elem)} );
                     var isQuery = (self.query().length == 0)
