@@ -4832,28 +4832,6 @@
   },
   {
     "verified": "2016-06-07",
-    "name": "Potter",
-    "theme": [
-      "OSX"
-    ],
-    "obsolete": false,
-    "compatibility": "2.4.1+",
-    "language": [
-      "Swift"
-    ],
-    "stars": 0,
-    "category": "Unknown",
-    "descriptionText": "Taskwarrior OS X taskbar extension",
-    "last_update": "2016-01-23",
-    "url_src": "https://github.com/vigilancer/Potter",
-    "author": [
-      "vigilancer"
-    ],
-    "description": "Taskwarrior OS X taskbar extension",
-    "url": "https://github.com/vigilancer/Potter"
-  },
-  {
-    "verified": "2016-06-07",
     "name": "taskrc",
     "theme": [],
     "obsolete": false,
