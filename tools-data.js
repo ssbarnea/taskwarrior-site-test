@@ -1545,26 +1545,6 @@
     "descriptionText": "Rea shows you the arithmetic mean time you have been active on a recurring task."
   },
   {
-    "verified": "2015-08-15",
-    "name": "xtw",
-    "theme": [
-      "OSX"
-    ],
-    "obsolete": false,
-    "compatibility": "Unknown",
-    "language": [],
-    "license": "own",
-    "category": "Extensions",
-    "url": "https://github.com/tmcw/xtw",
-    "last_update": "2012-12-11",
-    "url_src": "https://github.com/tmcw/xtw",
-    "author": [
-      "Tom MacWright"
-    ],
-    "description": "micro interface for Taskwarrior for OS X users",
-    "descriptionText": "micro interface for Taskwarrior for OS X users"
-  },
-  {
     "verified": "2016-06-07",
     "name": "taskpacifist",
     "theme": [
